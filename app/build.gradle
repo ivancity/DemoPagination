@@ -12,7 +12,7 @@ def getProps(String propName) {
         props.load(new FileInputStream(propsFile))
         return props[propName]
     } else {
-        return "";
+        throw new IllegalStateException("local.properties is missing, and add the constant API_KEY in the file.");
     }
 }
 android {
