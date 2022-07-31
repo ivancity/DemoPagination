@@ -5,7 +5,16 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlinx-serialization'
 }
-
+def getProps(String propName) {
+    def propsFile = rootProject.file('local.properties')
+    if (propsFile.exists()) {
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
+        return props[propName]
+    } else {
+        return "";
+    }
+}
 android {
     compileSdk 32
 
@@ -20,6 +29,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField("String", "API_KEY", getProps("API_KEY"))
     }
 
     buildTypes {
