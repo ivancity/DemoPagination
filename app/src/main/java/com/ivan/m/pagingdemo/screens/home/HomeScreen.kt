@@ -1,13 +1,17 @@
 package com.ivan.m.pagingdemo.screens.home
 
-import androidx.compose.material3.Scaffold
+import android.annotation.SuppressLint
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
+import com.ivan.m.pagingdemo.navigation.Screen
+import com.ivan.m.pagingdemo.screens.common.ListContent
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalCoilApi
 @ExperimentalPagingApi
 @Composable
@@ -17,4 +21,15 @@ fun HomeScreen(
 ) {
     val getAllImages = homeViewModel.getAllImages.collectAsLazyPagingItems()
 
+    Scaffold(
+        topBar = {
+            HomeTopBar(
+                onSearchClicked = {
+                    navController.navigate(Screen.Search.route)
+                }
+            )
+        }
+    ) {
+        ListContent(items = getAllImages)
+    }
 }

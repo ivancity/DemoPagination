@@ -3,7 +3,6 @@ package com.ivan.m.pagingdemo.model
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.paging3demo.model.Urls
 import com.ivan.m.pagingdemo.util.Constants.UNSPLASH_IMAGE_TABLE
 import kotlinx.serialization.Serializable
 

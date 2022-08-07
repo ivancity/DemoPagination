@@ -1,4 +1,4 @@
-package com.example.paging3demo.model
+package com.ivan.m.pagingdemo.model
 
 import kotlinx.serialization.Serializable
 
