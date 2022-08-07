@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
 import com.ivan.m.pagingdemo.screens.home.HomeScreen
+import com.ivan.m.pagingdemo.screens.search.SearchScreen
 
 @ExperimentalCoilApi
 @ExperimentalPagingApi
@@ -20,7 +21,7 @@ fun SetupNavGraph(navController: NavHostController) {
             HomeScreen(navController = navController)
         }
         composable(route = Screen.Search.route){
-//            SearchScreen(navController = navController)
+            SearchScreen(navController = navController)
         }
     }
 }

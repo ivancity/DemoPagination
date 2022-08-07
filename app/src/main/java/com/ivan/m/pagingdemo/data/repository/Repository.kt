@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.ivan.m.pagingdemo.data.local.UnsplashDatabase
+import com.ivan.m.pagingdemo.data.paging.SearchPagingSource
 import com.ivan.m.pagingdemo.data.paging.UnsplashRemoteMediator
 import com.ivan.m.pagingdemo.data.remote.UnsplashApi
 import com.ivan.m.pagingdemo.model.UnsplashImage
@@ -27,6 +28,15 @@ class Repository @Inject constructor(
                 unsplashDatabase = unsplashDatabase
             ),
             pagingSourceFactory = pagingSourceFactory
+        ).flow
+    }
+
+    fun searchImages(query: String): Flow<PagingData<UnsplashImage>> {
+        return Pager(
+            config = PagingConfig(pageSize = ITEMS_PER_PAGE),
+            pagingSourceFactory = {
+                SearchPagingSource(unsplashApi = unsplashApi, query = query)
+            }
         ).flow
     }
 
